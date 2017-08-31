@@ -24,5 +24,19 @@ class Admin                           # Declaring class admin
 	end
 end	
 
-## In ruby last line is by default returning in any method.																					
+## In ruby last line is by default returning in any method.	
+
+sql queries :-
+
+select programmers.programmer, technologies.technology technology from programmers left join programmers_technologies on programmers.id = programmers_technologies.programmer_id left join technologies on programmers_technologies.technology_id = technologies.id where programmers.is_senior = 1
+
+
+
+select programmers.programmer, technologies.technology technology from programmers left join programmers_technologies on programmers.id = programmers_technologies.programmer_id left join technologies on programmers_technologies.technology_id = technologies.id where technolgies.technology = 'p%' or technolgies.technology = '%e%' 
+
+select p1.programmer, p2.programmer from programmers as p1 inner join programmers as p2 on p1.id = p2.friend_id 
+
+select p1.programmer from programmers as p1 left join join programmers as p2 on p1.id = p2.friend_id where p2.friend_id = null;
+
+select programmers.programmer, technologies.technology technology from programmers left join programmers_technologies on programmers.id = programmers_technologies.programmer_id left join technologies on programmers_technologies.technology_id = technologies.id where programmers.experience > 7 order by technologies.technology
 
