@@ -40,3 +40,19 @@ select p1.programmer from programmers as p1 left join join programmers as p2 on 
 
 select programmers.programmer, technologies.technology technology from programmers left join programmers_technologies on programmers.id = programmers_technologies.programmer_id left join technologies on programmers_technologies.technology_id = technologies.id where programmers.experience > 7 order by technologies.technology
 
+# need to figure out last 2 queries
+
+select technologies.technology, STUFF((SELECT ',' + COALESCE(programmers.programmer)), '') 
+FROM programmers p1
+INNER JOIN technologies t on p1.programmer = t.TerritoryID
+WHERE et.EmployeeID = e.EmployeeId
+FOR XML PATH('') ), 1, 1, '') as names technology from programmers left join programmers_technologies on programmers.id = programmers_technologies.programmer_id left join technologies on programmers_technologies.technology_id = technologies.id group by 
+
+SELECT e.EmployeeId, e.FirstName, e.LastName,
+STUFF((SELECT ',' + COALESCE(LTRIM(RTRIM(t.TerritoryDescription)), '') 
+FROM EmployeeTerritories et
+INNER JOIN Territories t on et.TerritoryID = t.TerritoryID
+WHERE et.EmployeeID = e.EmployeeId
+FOR XML PATH('') ), 1, 1, '') as TerritoryList
+FROM Employees e
+
